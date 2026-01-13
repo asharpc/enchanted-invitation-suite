@@ -13,8 +13,8 @@ const VenueSection = () => {
     <InvitationCard index={1}>
       <div className="relative text-center">
         {/* Decorations */}
-        <FloralDecoration position="top-right" variant="mixed" />
-        <FloralDecoration position="bottom-left" variant="fruits" />
+        <FloralDecoration position="top-right" variant="mixed" size="lg" />
+        <FloralDecoration position="bottom-left" variant="eucalyptus" size="md" />
 
         <motion.div
           initial={{ opacity: 0 }}

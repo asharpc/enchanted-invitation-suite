@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ReactNode, useRef } from "react";
 
 interface InvitationCardProps {
   children: ReactNode;
@@ -8,65 +8,92 @@ interface InvitationCardProps {
 }
 
 const InvitationCard = ({ children, index, className = "" }: InvitationCardProps) => {
-  const cardVariants = {
-    hidden: { 
-      opacity: 0,
-      rotateX: -15,
-      y: 100,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      rotateX: 0,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-        delay: index * 0.1,
-      },
-    },
-  };
+  const ref = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Create page-opening effect - card unfolds as it comes into view
+  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.5], [-90, -20, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.4], [0, 0.5, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.5], [0.8, 0.95, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.5], [100, 30, 0]);
+  
+  // Shadow intensity based on scroll
+  const shadowOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0.05, 0.15]);
 
   return (
     <motion.section
-      className={`min-h-screen w-full flex items-center justify-center py-12 md:py-20 px-4 perspective-1000 ${className}`}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={cardVariants}
+      ref={ref}
+      className={`min-h-screen w-full flex items-center justify-center py-16 md:py-24 px-4 ${className}`}
+      style={{
+        perspective: "1500px",
+        perspectiveOrigin: "center top",
+      }}
     >
-      <div className="w-full max-w-4xl mx-auto">
+      <motion.div 
+        className="w-full max-w-4xl mx-auto"
+        style={{
+          rotateX,
+          opacity,
+          scale,
+          y,
+          transformOrigin: "center top",
+          transformStyle: "preserve-3d",
+        }}
+      >
         <motion.div
-          className="bg-card rounded-xl shadow-elevated p-8 md:p-12 lg:p-16 relative overflow-hidden"
+          className="bg-card rounded-xl p-8 md:p-12 lg:p-16 relative overflow-hidden"
           style={{
-            transformStyle: "preserve-3d",
-            boxShadow: "0 25px 50px -12px hsla(75, 20%, 20%, 0.15), 0 12px 24px -8px hsla(75, 20%, 20%, 0.1)",
-          }}
-          whileHover={{
-            y: -5,
-            transition: { duration: 0.3 },
+            boxShadow: `0 25px 50px -12px hsla(75, 20%, 20%, ${shadowOpacity.get()}), 
+                        0 12px 24px -8px hsla(75, 20%, 20%, 0.08),
+                        inset 0 1px 0 hsla(45, 40%, 95%, 0.5)`,
           }}
         >
-          {/* Paper texture overlay */}
+          {/* Paper fold line effect */}
           <div 
-            className="absolute inset-0 opacity-30 pointer-events-none"
+            className="absolute top-0 left-0 right-0 h-px opacity-20 pointer-events-none"
             style={{
-              backgroundImage: `
-                radial-gradient(ellipse at 20% 30%, hsla(75, 30%, 88%, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, hsla(45, 40%, 90%, 0.3) 0%, transparent 50%)
-              `,
+              background: "linear-gradient(90deg, transparent 0%, hsl(45, 30%, 70%) 50%, transparent 100%)",
             }}
           />
           
-          {/* Border decoration */}
-          <div className="absolute inset-4 border border-gold-muted rounded-lg opacity-40 pointer-events-none" />
+          {/* Paper texture overlay */}
+          <div 
+            className="absolute inset-0 opacity-25 pointer-events-none"
+            style={{
+              backgroundImage: `
+                radial-gradient(ellipse at 20% 30%, hsla(75, 30%, 88%, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, hsla(45, 40%, 90%, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, hsla(350, 20%, 95%, 0.2) 0%, transparent 70%)
+              `,
+            }}
+          />
+
+          {/* Subtle paper grain */}
+          <div 
+            className="absolute inset-0 opacity-5 pointer-events-none mix-blend-multiply"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            }}
+          />
+          
+          {/* Elegant gold border */}
+          <div 
+            className="absolute inset-5 rounded-lg pointer-events-none"
+            style={{
+              border: "1px solid hsla(45, 50%, 60%, 0.3)",
+              boxShadow: "inset 0 0 20px hsla(45, 50%, 80%, 0.1)",
+            }}
+          />
           
           <div className="relative z-10">
             {children}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 };
