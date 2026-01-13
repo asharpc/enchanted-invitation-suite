@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ReactNode, useRef } from "react";
+import GoldFrame from "./GoldFrame";
 
 interface InvitationCardProps {
   children: ReactNode;
@@ -80,14 +81,8 @@ const InvitationCard = ({ children, index, className = "" }: InvitationCardProps
             }}
           />
           
-          {/* Elegant gold border */}
-          <div 
-            className="absolute inset-5 rounded-lg pointer-events-none"
-            style={{
-              border: "1px solid hsla(45, 50%, 60%, 0.3)",
-              boxShadow: "inset 0 0 20px hsla(45, 50%, 80%, 0.1)",
-            }}
-          />
+          {/* Gold geometric diamond frame */}
+          <GoldFrame />
           
           <div className="relative z-10">
             {children}
