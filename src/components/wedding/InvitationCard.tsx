@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import GoldFrame from "./GoldFrame";
 
@@ -10,31 +10,35 @@ interface InvitationCardProps {
 
 const InvitationCard = ({ children, index, className = "" }: InvitationCardProps) => {
   const ref = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start 0.8", "start 0.2"]
   });
 
-  // Create page-opening effect - card unfolds as it comes into view
-  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.5], [-90, -20, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.4], [0, 0.5, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.5], [0.8, 0.95, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.3, 0.5], [100, 30, 0]);
-  
-  // Shadow intensity based on scroll
-  const shadowOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0.05, 0.15]);
+  // Enhanced flip animation - like opening a real invitation card
+  const rawRotateX = useTransform(scrollYProgress, [0, 1], [95, 0]);
+  const rotateX = useSpring(rawRotateX, { stiffness: 100, damping: 30 });
+
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.6, 1]);
+  const opacity = useSpring(rawOpacity, { stiffness: 100, damping: 30 });
+
+  const rawScale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+  const scale = useSpring(rawScale, { stiffness: 100, damping: 30 });
+
+  const rawY = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const y = useSpring(rawY, { stiffness: 100, damping: 30 });
 
   return (
     <motion.section
       ref={ref}
-      className={`min-h-screen w-full flex items-center justify-center py-16 md:py-24 px-4 ${className}`}
+      className={`min-h-screen w-full flex items-center justify-center py-16 md:py-20 px-4 ${className}`}
       style={{
-        perspective: "1500px",
-        perspectiveOrigin: "center top",
+        perspective: "2000px",
+        perspectiveOrigin: "center center",
       }}
     >
-      <motion.div 
+      <motion.div
         className="w-full max-w-4xl mx-auto"
         style={{
           rotateX,
@@ -46,11 +50,17 @@ const InvitationCard = ({ children, index, className = "" }: InvitationCardProps
         }}
       >
         <motion.div
-          className="bg-card rounded-xl p-8 md:p-12 lg:p-16 relative overflow-hidden"
+          className="bg-card rounded-2xl p-8 md:p-12 lg:p-16 relative overflow-hidden border border-gold-muted/20"
           style={{
-            boxShadow: `0 25px 50px -12px hsla(75, 20%, 20%, ${shadowOpacity.get()}), 
-                        0 12px 24px -8px hsla(75, 20%, 20%, 0.08),
-                        inset 0 1px 0 hsla(45, 40%, 95%, 0.5)`,
+            boxShadow: `
+              0 0 0 1px hsla(45, 30%, 70%, 0.12),
+              0 4px 6px hsla(75, 20%, 20%, 0.06),
+              0 8px 16px hsla(75, 20%, 20%, 0.05),
+              0 16px 32px hsla(75, 20%, 20%, 0.04),
+              inset 0 1px 0 hsla(45, 40%, 95%, 0.6)
+            `,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {/* Paper fold line effect */}

@@ -182,20 +182,21 @@ const FloralDecoration = ({ position, variant = "mixed", className = "", size = 
 
   return (
     <motion.div
-      className={`absolute pointer-events-none ${positionClasses[position]} ${className}`}
+      className={`absolute pointer-events-none z-10 ${positionClasses[position]} ${className}`}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
+      style={{ opacity: 0.7 }}
     >
       <motion.div
-        animate={{ 
+        animate={{
           rotate: position.includes("left") ? [-1, 1, -1] : [1, -1, 1],
         }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
         className={sizeClasses[size]}
       >

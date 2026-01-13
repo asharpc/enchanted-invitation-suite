@@ -3,11 +3,12 @@ import InvitationCard from "./InvitationCard";
 import FloralDecoration from "./FloralDecoration";
 
 const VenueSection = () => {
-  const venueName = "Villa dei Fiori";
-  const venueAddress = "Via della Rosa 42, Tuscany, Italy";
-  
-  // Example coordinates for Tuscany
-  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.4986847878124!2d11.2558136!3d43.7695604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a5f0aca8b7%3A0x7c7c5aa1d3d44f3a!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus";
+  const venueName = "Rozia International Convention Centre";
+  const venueAddress = "Near Calicut International Airport, Kodangad, Kondotty";
+  const venueLocation = "Malappuram, Kerala 673638";
+
+  // Rozia International Convention Centre coordinates
+  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.0!2d75.8!3d11.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDE0JzAwLjAiTiA3NcKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin";
 
   return (
     <InvitationCard index={1}>
@@ -21,7 +22,7 @@ const VenueSection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="py-4 md:py-8"
+          className="py-8 md:py-12"
         >
           {/* Section Header */}
           <motion.div
@@ -29,21 +30,24 @@ const VenueSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-8 md:mb-12"
+            className="mb-12 md:mb-16"
           >
-            <p className="font-body text-lg md:text-xl text-muted-foreground tracking-[0.3em] uppercase mb-4">
-              The Celebration
+            <p className="font-body text-base md:text-lg text-muted-foreground tracking-[0.3em] uppercase mb-6">
+              Venue
             </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary mb-6 leading-tight">
               {venueName}
             </h2>
-            <div className="flex items-center justify-center gap-4 my-6">
-              <div className="h-px w-12 md:w-20 bg-gold-muted" />
+            <div className="flex items-center justify-center gap-4 my-8">
+              <div className="h-px w-16 md:w-24 bg-gold-muted" />
               <div className="w-2 h-2 rotate-45 bg-gold" />
-              <div className="h-px w-12 md:w-20 bg-gold-muted" />
+              <div className="h-px w-16 md:w-24 bg-gold-muted" />
             </div>
-            <p className="font-body text-xl md:text-2xl text-foreground">
+            <p className="font-body text-lg md:text-xl text-foreground mb-2">
               {venueAddress}
+            </p>
+            <p className="font-body text-base md:text-lg text-muted-foreground">
+              {venueLocation}
             </p>
           </motion.div>
 
@@ -96,22 +100,22 @@ const VenueSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
             viewport={{ once: true }}
-            className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+            className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
           >
-            <div className="text-center">
-              <p className="font-display text-xl md:text-2xl text-primary mb-2">Ceremony</p>
-              <p className="font-body text-lg text-muted-foreground">4:00 PM</p>
-              <p className="font-body text-base text-muted-foreground">Garden Pavilion</p>
+            <div className="text-center space-y-2">
+              <p className="font-display text-2xl md:text-3xl text-primary mb-3">Nikah</p>
+              <p className="font-body text-lg md:text-xl text-foreground" style={{ fontVariantNumeric: "tabular-nums" }}>11:30 AM</p>
+              <p className="font-body text-base text-muted-foreground">Marriage Ceremony</p>
             </div>
-            <div className="text-center">
-              <p className="font-display text-xl md:text-2xl text-primary mb-2">Cocktails</p>
-              <p className="font-body text-lg text-muted-foreground">5:30 PM</p>
-              <p className="font-body text-base text-muted-foreground">Terrace</p>
+            <div className="text-center space-y-2">
+              <p className="font-display text-2xl md:text-3xl text-primary mb-3">Lunch</p>
+              <p className="font-body text-lg md:text-xl text-foreground" style={{ fontVariantNumeric: "tabular-nums" }}>12:30 PM</p>
+              <p className="font-body text-base text-muted-foreground">Celebration Feast</p>
             </div>
-            <div className="text-center">
-              <p className="font-display text-xl md:text-2xl text-primary mb-2">Reception</p>
-              <p className="font-body text-lg text-muted-foreground">7:00 PM</p>
-              <p className="font-body text-base text-muted-foreground">Grand Hall</p>
+            <div className="text-center space-y-2">
+              <p className="font-display text-2xl md:text-3xl text-primary mb-3">Reception</p>
+              <p className="font-body text-lg md:text-xl text-foreground" style={{ fontVariantNumeric: "tabular-nums" }}>5:00 PM</p>
+              <p className="font-body text-base text-muted-foreground">Evening Celebration</p>
             </div>
           </motion.div>
         </motion.div>
