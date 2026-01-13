@@ -23,10 +23,10 @@ const HeroSection = () => {
     <InvitationCard index={0}>
       <div className="relative text-center">
         {/* Decorations */}
-        <FloralDecoration position="top-left" variant="flowers" />
-        <FloralDecoration position="top-right" variant="fruits" />
-        <FloralDecoration position="bottom-left" variant="mixed" />
-        <FloralDecoration position="bottom-right" variant="flowers" />
+        <FloralDecoration position="top-left" variant="flowers" size="lg" />
+        <FloralDecoration position="top-right" variant="mixed" size="lg" />
+        <FloralDecoration position="bottom-left" variant="eucalyptus" size="md" />
+        <FloralDecoration position="bottom-right" variant="flowers" size="lg" />
 
         {/* Content */}
         <motion.div

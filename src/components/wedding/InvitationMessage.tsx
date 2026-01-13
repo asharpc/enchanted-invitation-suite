@@ -7,9 +7,9 @@ const InvitationMessage = () => {
     <InvitationCard index={2}>
       <div className="relative text-center">
         {/* Decorations */}
-        <FloralDecoration position="top-left" variant="flowers" />
-        <FloralDecoration position="bottom-right" variant="mixed" />
-        <FloralDecoration position="center-right" variant="fruits" />
+        <FloralDecoration position="top-left" variant="flowers" size="lg" />
+        <FloralDecoration position="bottom-right" variant="mixed" size="lg" />
+        <FloralDecoration position="center-right" variant="eucalyptus" size="md" />
 
         <motion.div
           initial={{ opacity: 0 }}
