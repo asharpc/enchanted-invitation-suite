@@ -86,7 +86,7 @@ npm run build
 4. Configure build settings:
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Node version**: `18`
+   - **Node version**: `20`
 
 The site will auto-deploy on every push to your main branch.
 

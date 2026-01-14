@@ -81,10 +81,11 @@ This method enables automatic deployments on every git push.
    Build command: npm run build
    Build output directory: dist
    Root directory: /
+   Node version: 20
    ```
 
 4. **Environment variables (optional):**
-   - Node version: `18` (add as `NODE_VERSION`)
+   - Node version: `20` (add as `NODE_VERSION`)
 
 5. **Save and Deploy**
 
@@ -149,9 +150,10 @@ This happens when Cloudflare detects a `bun.lockb` file and tries to use Bun ins
 
 The project is configured to use npm via `package.json` → `"packageManager": "npm@10.9.2"`
 
-**Error: Node version mismatch**
-- Ensure `.node-version` or `.nvmrc` file exists with `18`
-- Or set `NODE_VERSION=18` in Cloudflare environment variables
+**Error: Node version mismatch or "Wrangler requires at least Node.js v20.0.0"**
+- Ensure `.node-version` or `.nvmrc` file exists with `20`
+- Or set `NODE_VERSION=20` in Cloudflare environment variables
+- Wrangler (the Cloudflare CLI) requires Node 20+, even though the app itself works with Node 18
 
 **Error: Module not found**
 ```bash
