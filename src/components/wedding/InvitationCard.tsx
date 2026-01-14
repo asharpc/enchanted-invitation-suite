@@ -17,18 +17,20 @@ const InvitationCard = ({ children, index, className = "", decorations }: Invita
     offset: ["start 0.8", "start 0.2"]
   });
 
-  // Enhanced flip animation - like opening a real invitation card
+  // Enhanced flip animation - smoother spring physics
+  const springConfig = { stiffness: 60, damping: 20, mass: 1 };
+
   const rawRotateX = useTransform(scrollYProgress, [0, 1], [95, 0]);
-  const rotateX = useSpring(rawRotateX, { stiffness: 100, damping: 30 });
+  const rotateX = useSpring(rawRotateX, springConfig);
 
   const rawOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.6, 1]);
-  const opacity = useSpring(rawOpacity, { stiffness: 100, damping: 30 });
+  const opacity = useSpring(rawOpacity, springConfig);
 
   const rawScale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
-  const scale = useSpring(rawScale, { stiffness: 100, damping: 30 });
+  const scale = useSpring(rawScale, springConfig);
 
   const rawY = useTransform(scrollYProgress, [0, 1], [60, 0]);
-  const y = useSpring(rawY, { stiffness: 100, damping: 30 });
+  const y = useSpring(rawY, springConfig);
 
   return (
     <motion.section

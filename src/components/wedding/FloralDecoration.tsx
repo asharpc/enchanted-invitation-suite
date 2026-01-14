@@ -8,6 +8,7 @@ interface FloralDecorationProps {
 }
 
 const FloralDecoration = ({ position, variant = "mixed", className = "", size = "md" }: FloralDecorationProps) => {
+  return null;
   const positionClasses = {
     "top-left": "top-0 left-0 -translate-x-1/4 -translate-y-1/4",
     "top-right": "top-0 right-0 translate-x-1/4 -translate-y-1/4",

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import FloralDecoration from "./FloralDecoration";
 
@@ -10,9 +10,14 @@ const BismillahPage = () => {
     offset: ["start start", "end start"]
   });
 
-  // Book flip to left animation
-  const rotateY = useTransform(scrollYProgress, [0, 0.5], [0, -180]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.5, 0]);
+  // Book flip to left animation - smoothed
+  const springConfig = { stiffness: 60, damping: 20, mass: 1 };
+
+  const rawRotateY = useTransform(scrollYProgress, [0, 0.5], [0, -180]);
+  const rotateY = useSpring(rawRotateY, springConfig);
+
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.5, 0]);
+  const opacity = useSpring(rawOpacity, springConfig);
 
   return (
     <div ref={ref} className="h-screen w-full relative flex items-center justify-center overflow-hidden snap-start snap-always">

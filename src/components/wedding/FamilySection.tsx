@@ -12,7 +12,7 @@ const FamilySection = () => {
 
     return (
         <InvitationCard index={1} decorations={decorations}>
-            <div className="relative text-center h-full flex flex-col justify-center py-8">
+            <div className="relative text-center flex flex-col justify-center min-h-[60vh] md:min-h-[70vh] py-12 md:py-20">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
