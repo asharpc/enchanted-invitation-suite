@@ -1,73 +1,137 @@
-# Welcome to your Lovable project
+# Enchanted Invitation Suite - Nikah Invitation
 
-## Project info
+A beautiful, modern Muslim Nikah invitation website for **Rifha Fathima & Abdul Lihan**.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+- 🎨 Elegant Islamic design with gold calligraphy
+- 📖 Book-flipping Bismillah opening page
+- 💍 Smooth scroll-based card animations
+- ⏰ Live countdown timer to the wedding
+- 📱 Fully responsive (mobile, tablet, desktop)
+- 🎭 Framer Motion animations throughout
+- 🌸 Decorative floral elements
 
-There are several ways of editing your application.
+## Event Details
 
-**Use Lovable**
+- **Bride**: Rifha Fathima (Daughter of Abdul Rafeeque & Saleena)
+- **Groom**: Abdul Lihan (Son of Abdul Nazeer & Vinitha Nazeer)
+- **Date**: Saturday, February 15, 2026
+- **Venue**: Rozia International Convention Centre, Malappuram, Kerala
+- **Timings**:
+  - Nikah: 11:30 AM
+  - Lunch: 12:30 PM
+  - Reception: 5:00 PM
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Animations**: Framer Motion
+- **Fonts**: Google Fonts (Amiri for Arabic)
+- **Deployment**: Cloudflare Pages
 
-**Use your preferred IDE**
+## Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Install dependencies
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Run development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## Deployment to Cloudflare Pages
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Method 1: Using Wrangler CLI (Recommended)
 
-**Use GitHub Codespaces**
+1. Install Wrangler globally (if not already installed):
+```bash
+npm install -g wrangler
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Login to Cloudflare:
+```bash
+wrangler login
+```
 
-## What technologies are used for this project?
+3. Deploy to Cloudflare Pages:
+```bash
+npm run pages:deploy
+```
 
-This project is built with:
+### Method 2: Via Cloudflare Dashboard
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Build the project:
+```bash
+npm run build
+```
 
-## How can I deploy this project?
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages → Create a project
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+3. Choose "Upload assets" and upload the `dist` folder
 
-## Can I connect a custom domain to my Lovable project?
+### Method 3: Connect Git Repository
 
-Yes, you can!
+1. Push your code to GitHub/GitLab
+2. Go to Cloudflare Pages → Create a project → Connect to Git
+3. Select your repository
+4. Configure build settings:
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+   - **Node version**: `18`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The site will auto-deploy on every push to your main branch.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Configuration Files
+
+- `wrangler.toml` - Cloudflare Pages/Workers configuration
+- `public/_redirects` - SPA routing configuration for Cloudflare Pages
+- `.node-version` - Specifies Node.js version for deployment
+
+## Project Structure
+
+```
+src/
+├── components/
+│   └── wedding/
+│       ├── BismillahPage.tsx       # Opening Bismillah card
+│       ├── HeroSection.tsx         # Main hero with names
+│       ├── VenueSection.tsx        # Venue details & map
+│       ├── InvitationMessage.tsx   # Family details & invitation
+│       ├── CountdownTimer.tsx      # Live countdown
+│       ├── InvitationCard.tsx      # Reusable card with flip animation
+│       ├── GoldFrame.tsx           # Decorative gold border
+│       └── FloralDecoration.tsx    # Floral elements
+├── pages/
+│   └── Index.tsx                   # Main page layout
+└── index.css                       # Global styles & fonts
+```
+
+## Customization
+
+To customize the invitation for another event:
+
+1. Update event details in the respective component files:
+   - Names: `HeroSection.tsx`, `InvitationMessage.tsx`
+   - Venue: `VenueSection.tsx`
+   - Date: `HeroSection.tsx`, `CountdownTimer.tsx`
+
+2. Update colors in `tailwind.config.ts` if needed
+
+3. Replace the Google Maps embed URL in `VenueSection.tsx`
+
+## License
+
+Private project for Abdul Lihan & Rifha Fathima's Nikah ceremony.
+
+---
+
+Built with ❤️ for a blessed union

@@ -1,0 +1,25 @@
+name = "enchanted-invitation-suite"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+[site]
+bucket = "./dist"
+
+# Build configuration for Cloudflare Pages
+# The build command and output directory are handled by Pages automatically
+# when you connect your repository or use wrangler pages deploy
+
+# Environment variables (if needed)
+[vars]
+# Add any environment variables here if needed
+
+# Production environment
+[env.production]
+name = "enchanted-invitation-suite"
+route = ""
+
+# Development/Preview environment
+[env.preview]
+name = "enchanted-invitation-suite-preview"
