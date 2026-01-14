@@ -1,5 +1,5 @@
-name = "enchanted-invitation-suite"
-compatibility_date = "2024-01-01"
+name = "enchanted-invitation-suite"          # Optional, but good to have for clarity
+compatibility_date = "2026-01-01"
 
 # Pages configuration
 pages_build_output_dir = "dist"
