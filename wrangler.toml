@@ -8,8 +8,13 @@ pages_build_output_dir = "dist"
 bucket = "./dist"
 
 # Build configuration for Cloudflare Pages
-# The build command and output directory are handled by Pages automatically
-# when you connect your repository or use wrangler pages deploy
+# These settings ensure npm is used instead of bun
+[build]
+command = "npm run build"
+
+[build.environment]
+NODE_VERSION = "18"
+NPM_VERSION = "10.9.2"
 
 # Environment variables (if needed)
 [vars]

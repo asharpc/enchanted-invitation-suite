@@ -128,9 +128,30 @@ The project is configured with:
 
 ### Build Fails
 
+**Error: "Outdated lockfile version" or "bun.lockb" errors**
+
+This happens when Cloudflare detects a `bun.lockb` file and tries to use Bun instead of npm.
+
+**Solution:**
+1. Delete `bun.lockb` file:
+   ```bash
+   rm -f bun.lockb
+   ```
+2. Ensure `package-lock.json` exists:
+   ```bash
+   npm install
+   ```
+3. Add to `.gitignore`:
+   ```
+   bun.lockb
+   ```
+4. Commit and push changes
+
+The project is configured to use npm via `package.json` → `"packageManager": "npm@10.9.2"`
+
 **Error: Node version mismatch**
-- Ensure `.node-version` file exists with `18`
-- Or set `NODE_VERSION=18` in environment variables
+- Ensure `.node-version` or `.nvmrc` file exists with `18`
+- Or set `NODE_VERSION=18` in Cloudflare environment variables
 
 **Error: Module not found**
 ```bash
