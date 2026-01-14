@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import BismillahPage from "@/components/wedding/BismillahPage";
 import HeroSection from "@/components/wedding/HeroSection";
+import FamilySection from "@/components/wedding/FamilySection";
+import WarmInvitationSection from "@/components/wedding/WarmInvitationSection";
 import VenueSection from "@/components/wedding/VenueSection";
-import InvitationMessage from "@/components/wedding/InvitationMessage";
-import CountdownTimer from "@/components/wedding/CountdownTimer";
-import InvitationCard from "@/components/wedding/InvitationCard";
+import CountdownSection from "@/components/wedding/CountdownSection";
 
-const Index = () => {
+interface IndexProps {
+  eventType?: "nikah" | "reception";
+}
+
+const Index = ({ eventType = "nikah" }: IndexProps) => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Subtle background pattern */}
@@ -31,16 +35,11 @@ const Index = () => {
         {/* Opening Bismillah Page - flips like a book */}
         <BismillahPage />
 
-        <HeroSection />
+        <HeroSection eventType={eventType} />
+        <FamilySection />
+        <WarmInvitationSection eventType={eventType} />
         <VenueSection />
-        <InvitationMessage />
-
-        {/* Countdown section */}
-        <InvitationCard index={3}>
-          <div className="relative text-center py-4 md:py-8">
-            <CountdownTimer />
-          </div>
-        </InvitationCard>
+        <CountdownSection />
       </motion.main>
 
       {/* Footer */}

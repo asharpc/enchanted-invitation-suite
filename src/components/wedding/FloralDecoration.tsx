@@ -18,9 +18,9 @@ const FloralDecoration = ({ position, variant = "mixed", className = "", size = 
   };
 
   const sizeClasses = {
-    sm: "w-24 h-24 md:w-32 md:h-32",
-    md: "w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56",
-    lg: "w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80",
+    sm: "w-16 h-16 md:w-32 md:h-32",
+    md: "w-24 h-24 md:w-48 md:h-48 lg:w-56 lg:h-56",
+    lg: "w-36 h-36 md:w-64 md:h-64 lg:w-80 lg:h-80",
   };
 
   const getDecorationContent = () => {
@@ -86,7 +86,7 @@ const FloralDecoration = ({ position, variant = "mixed", className = "", size = 
           <svg viewBox="0 0 200 200" className="w-full h-full">
             {/* Eucalyptus branch */}
             <path d="M100 180 Q90 140, 80 100 Q75 70, 90 40" stroke="hsl(165, 20%, 40%)" strokeWidth="2" fill="none" opacity="0.6" />
-            
+
             {/* Leaves along stem */}
             <ellipse cx="75" cy="150" rx="15" ry="8" fill="hsl(165, 25%, 55%)" opacity="0.6" transform="rotate(-30, 75, 150)" />
             <ellipse cx="95" cy="140" rx="14" ry="7" fill="hsl(165, 28%, 52%)" opacity="0.55" transform="rotate(25, 95, 140)" />
@@ -95,7 +95,7 @@ const FloralDecoration = ({ position, variant = "mixed", className = "", size = 
             <ellipse cx="72" cy="85" rx="11" ry="6" fill="hsl(165, 28%, 48%)" opacity="0.6" transform="rotate(-25, 72, 85)" />
             <ellipse cx="88" cy="70" rx="10" ry="5" fill="hsl(165, 32%, 52%)" opacity="0.55" transform="rotate(35, 88, 70)" />
             <ellipse cx="80" cy="50" rx="8" ry="4" fill="hsl(165, 30%, 55%)" opacity="0.5" transform="rotate(-20, 80, 50)" />
-            
+
             {/* Silver dollar eucalyptus */}
             <circle cx="130" cy="100" r="12" fill="hsl(165, 20%, 60%)" opacity="0.5" />
             <circle cx="145" cy="120" r="10" fill="hsl(165, 22%, 55%)" opacity="0.45" />
@@ -153,13 +153,13 @@ const FloralDecoration = ({ position, variant = "mixed", className = "", size = 
               <path d="M200 20 Q220 40, 240 30" stroke="hsl(165, 20%, 40%)" strokeWidth="1.5" fill="none" />
               <ellipse cx="210" cy="25" rx="10" ry="22" fill="hsl(165, 25%, 55%)" transform="rotate(50, 210, 25)" />
               <ellipse cx="235" cy="20" rx="8" ry="18" fill="hsl(165, 30%, 50%)" transform="rotate(30, 235, 20)" />
-              
+
               {/* Left side eucalyptus */}
               <path d="M30 80 Q20 120, 35 160" stroke="hsl(165, 20%, 40%)" strokeWidth="1.5" fill="none" />
               <ellipse cx="25" cy="95" rx="12" ry="28" fill="hsl(165, 28%, 52%)" transform="rotate(-60, 25, 95)" />
               <ellipse cx="22" cy="130" rx="10" ry="24" fill="hsl(165, 25%, 58%)" transform="rotate(-45, 22, 130)" />
               <ellipse cx="30" cy="155" rx="9" ry="20" fill="hsl(165, 30%, 55%)" transform="rotate(-55, 30, 155)" />
-              
+
               {/* Bottom branch */}
               <ellipse cx="120" cy="250" rx="12" ry="28" fill="hsl(165, 25%, 55%)" transform="rotate(-20, 120, 250)" />
               <ellipse cx="160" cy="260" rx="10" ry="24" fill="hsl(165, 28%, 52%)" transform="rotate(15, 160, 260)" />

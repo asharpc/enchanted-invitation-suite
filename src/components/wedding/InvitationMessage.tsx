@@ -42,7 +42,7 @@ const InvitationMessage = () => {
             <p className="font-body text-base md:text-lg text-muted-foreground tracking-wider uppercase mb-4">
               Daughter of
             </p>
-            <p className="font-body text-xl md:text-2xl text-foreground leading-relaxed">
+            <p className="font-body text-lg md:text-2xl text-foreground leading-relaxed">
               <span className="font-display text-primary">Abdul Rafeeque</span> & <span className="font-display text-primary">Saleena</span>
             </p>
             <p className="font-body text-base md:text-lg text-muted-foreground mt-2">
@@ -77,7 +77,7 @@ const InvitationMessage = () => {
             <p className="font-body text-base md:text-lg text-muted-foreground tracking-wider uppercase mb-4">
               Son of
             </p>
-            <p className="font-body text-xl md:text-2xl text-foreground leading-relaxed">
+            <p className="font-body text-lg md:text-2xl text-foreground leading-relaxed">
               <span className="font-display text-primary">Abdul Nazeer</span> & <span className="font-display text-primary">Vinitha Nazeer</span>
             </p>
             <p className="font-body text-base md:text-lg text-muted-foreground mt-2">
@@ -100,7 +100,7 @@ const InvitationMessage = () => {
               cordially invite you to share in the joy of the Nikah ceremony uniting
             </p>
             <div className="my-8 md:my-10">
-              <p className="font-display text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
+              <p className="font-display text-2xl md:text-4xl lg:text-5xl text-primary leading-tight">
                 Rifha Fathima & Abdul Lihan
               </p>
             </div>
@@ -126,7 +126,7 @@ const InvitationMessage = () => {
             <p className="font-body text-base md:text-lg text-foreground leading-relaxed">
               request the honour of your presence at the Nikah ceremony of their beloved daughter
             </p>
-            <p className="font-display text-2xl md:text-3xl text-primary mt-6">
+            <p className="font-display text-xl md:text-3xl text-primary mt-6">
               Rifha Fathima
             </p>
             <p className="font-body text-base text-muted-foreground mt-8">

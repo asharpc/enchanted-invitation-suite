@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import FloralDecoration from "./FloralDecoration";
 
 const BismillahPage = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,7 +15,7 @@ const BismillahPage = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.5, 0]);
 
   return (
-    <div ref={ref} className="h-screen w-full relative flex items-center justify-center overflow-hidden">
+    <div ref={ref} className="h-screen w-full relative flex items-center justify-center overflow-hidden snap-start snap-always">
       {/* Perspective container */}
       <div
         style={{
@@ -31,11 +32,11 @@ const BismillahPage = () => {
             transformStyle: "preserve-3d",
             transformOrigin: "left center",
           }}
-          className="w-full max-w-2xl h-[80vh] relative"
+          className="w-full max-w-2xl h-auto min-h-[85vh] md:h-[90vh] relative"
         >
           {/* Front of the page */}
           <div
-            className="absolute inset-0 bg-card rounded-2xl border-2 border-gold/30 shadow-2xl p-12 md:p-16 flex flex-col items-center justify-center"
+            className="absolute inset-0 bg-card rounded-2xl border-2 border-gold/30 shadow-2xl p-6 md:p-16 flex flex-col items-center justify-center"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
@@ -124,11 +125,13 @@ const BismillahPage = () => {
               </motion.div>
             </motion.div>
 
-            {/* Gold corner accents */}
-            <div className="absolute top-8 left-8 w-12 h-12 border-l-2 border-t-2 border-gold/40" />
-            <div className="absolute top-8 right-8 w-12 h-12 border-r-2 border-t-2 border-gold/40" />
-            <div className="absolute bottom-8 left-8 w-12 h-12 border-l-2 border-b-2 border-gold/40" />
-            <div className="absolute bottom-8 right-8 w-12 h-12 border-r-2 border-b-2 border-gold/40" />
+            {/* Floral decorations filling the space */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <FloralDecoration position="top-left" variant="flowers" size="lg" className="opacity-90" />
+              <FloralDecoration position="top-right" variant="mixed" size="lg" className="opacity-90" />
+              <FloralDecoration position="bottom-left" variant="eucalyptus" size="lg" className="opacity-90" />
+              <FloralDecoration position="bottom-right" variant="flowers" size="lg" className="opacity-90" />
+            </div>
           </div>
 
           {/* Back of the page (mirror text for realism) */}

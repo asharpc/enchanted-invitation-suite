@@ -60,7 +60,7 @@ const CountdownTimer = () => {
       </div>
 
       {/* Timer grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
+      <div className="grid grid-cols-4 gap-2 md:gap-4 max-w-2xl mx-auto px-2"> {/* Changed to grid-cols-4 for all screens, reduced gap */}
         {timeUnits.map((unit, index) => (
           <motion.div
             key={unit.label}
@@ -71,21 +71,21 @@ const CountdownTimer = () => {
             className="relative"
           >
             {/* Card background with subtle border */}
-            <div className="bg-card rounded-lg p-6 border border-gold-muted/20 shadow-sm">
+            <div className="bg-card rounded-lg p-2 md:p-4 border border-gold-muted/20 shadow-sm"> {/* Reduced padding */}
               {/* Number - tabular nums for alignment */}
               <motion.div
                 key={unit.value}
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="font-display text-4xl md:text-5xl font-medium text-primary mb-2"
+                className="font-display text-2xl md:text-5xl font-medium text-primary mb-1" /* Reduced text size */
                 style={{ fontVariantNumeric: "tabular-nums" }}
               >
                 {String(unit.value).padStart(2, "0")}
               </motion.div>
 
               {/* Label */}
-              <p className="font-body text-sm md:text-base text-muted-foreground tracking-wider uppercase">
+              <p className="font-body text-[10px] md:text-base text-muted-foreground tracking-wider uppercase">
                 {unit.label}
               </p>
             </div>
